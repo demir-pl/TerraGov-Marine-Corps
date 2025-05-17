@@ -1,0 +1,10 @@
+{
+	"version": 1,
+	"map_name": "MetaStation",
+	"map_path": "map_files/MetaStation",
+	"map_file": "MetaStation.dmm",
+	"announce_text": "MetaStation is a large, multi-purpose space station that serves as a hub for various factions and organizations. An emergency signal has been detected from the station after a massive explosion, and the ship has been dispatched to investigate. Be ready to assist any survivors.",
+	"armor": "prison",
+	"No Parallax": true,
+	"traits":[{"Baseturf": "/turf/open/floor/plating"}]
+}
