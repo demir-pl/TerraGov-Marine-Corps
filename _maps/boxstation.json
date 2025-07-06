@@ -1,0 +1,9 @@
+{
+    "map_name": "Bpx station",
+    "map_path": "map_files/box_station",
+    "map_file": "box_station.dmm",
+    "announce_text": "todo",
+    "armor": "prison",
+	"traits":[{"Baseturf": "/turf/open/floor/plating"}],
+	"quickbuilds": 800,
+}
