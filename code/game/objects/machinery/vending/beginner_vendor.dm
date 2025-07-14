@@ -8,7 +8,6 @@ GLOBAL_LIST_INIT(beginner_loadouts, init_beginner_loadouts())
 		/datum/outfit/quick/beginner/marine/rifleman,
 		/datum/outfit/quick/beginner/marine/machinegunner,
 		/datum/outfit/quick/beginner/marine/marksman,
-		/datum/outfit/quick/beginner/marine/shotgunner,
 		/datum/outfit/quick/beginner/marine/shocktrooper,
 		/datum/outfit/quick/beginner/marine/hazmat,
 		/datum/outfit/quick/beginner/marine/cqc,
@@ -36,7 +35,6 @@ GLOBAL_LIST_INIT(robot_loadouts, init_robot_loadouts())
 		/datum/outfit/quick/beginner_robot/marine/rifleman,
 		/datum/outfit/quick/beginner_robot/marine/machinegunner,
 		/datum/outfit/quick/beginner_robot/marine/marksman,
-		/datum/outfit/quick/beginner_robot/marine/shotgunner,
 		/datum/outfit/quick/beginner_robot/marine/shocktrooper,
 		//Engineer
 		/datum/outfit/quick/beginner_robot/engineer/builder,
