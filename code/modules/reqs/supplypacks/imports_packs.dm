@@ -105,24 +105,6 @@ Imports
 	contains = list(/obj/item/ammo_magazine/smg/ppsh/extended)
 	cost = 3
 
-/datum/supply_packs/imports/leveraction
-	name = "Lever action rifle"
-	contains = list(/obj/item/weapon/gun/shotgun/pump/lever)
-	cost = 50
-	available_against_xeno_only = TRUE
-
-/datum/supply_packs/imports/mbx900
-	name = "MBX-900 lever action shotgun"
-	contains = list(/obj/item/weapon/gun/shotgun/pump/lever/mbx900)
-	cost = 50
-	available_against_xeno_only = TRUE
-
-/datum/supply_packs/imports/mbx900/buckshot
-	name = "MBX-900 .410 buckshot shells"
-	contains = list(/obj/item/ammo_magazine/shotgun/mbx900/buckshot)
-	cost = 10
-	available_against_xeno_only = TRUE
-
 /datum/supply_packs/imports/dragunov
 	name = "SVD Dragunov sniper"
 	contains = list(/obj/item/weapon/gun/rifle/sniper/svd)

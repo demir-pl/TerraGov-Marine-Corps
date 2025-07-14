@@ -429,7 +429,7 @@ WEAPONS
 /datum/supply_packs/weapons/zx76
 	name = "ZX-76 twin-barrled burst shotgun"
 	contains = list(/obj/item/weapon/gun/shotgun/zx76)
-	cost = 1000
+	cost = 10000
 
 /datum/supply_packs/weapons/shotguntracker
 	name = "12 gauge tracker shells"

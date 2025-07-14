@@ -136,41 +136,6 @@
 	)
 
 
-/datum/outfit/quick/beginner/marine/shotgunner
-	name = "Shotgunner"
-	desc = "Up close and personal. Wields the SH-39, a semi-automatic shotgun loaded with slugs. \
-	An absolute monster at short to mid range, the shotgun will do heavy damage to any target hit, as well as stunning them briefly, staggering them, and knocking them back."
-
-	w_uniform = /obj/item/clothing/under/marine/holster
-	wear_suit = /obj/item/clothing/suit/modular/xenonauten/lightgeneral
-	suit_store = /obj/item/weapon/gun/shotgun/combat/standardmarine/beginner
-	belt = /obj/item/storage/belt/shotgun
-	head = /obj/item/clothing/head/modular/m10x/freyr
-	gloves = /obj/item/clothing/gloves/marine/fingerless
-	mask = /obj/item/clothing/mask/gas/tactical/coif
-	l_hand = /obj/item/paper/tutorial/beginner_shotgunner
-
-	backpack_contents = list(
-		/obj/item/storage/box/MRE = 1,
-		/obj/item/stack/medical/heal_pack/gauze = 1,
-		/obj/item/stack/medical/heal_pack/ointment = 1,
-		/obj/item/ammo_magazine/handful/slug = 4,
-		/obj/item/reagent_containers/hypospray/autoinjector/inaprovaline = 1,
-	)
-
-	suit_contents = list(
-		/obj/item/storage/box/m94 = 2,
-	)
-
-	belt_contents = list(
-		/obj/item/ammo_magazine/handful/slug = 14,
-	)
-
-	webbing_contents = list(
-		/obj/item/ammo_magazine/pistol/plasma_pistol = 3,
-		/obj/item/weapon/gun/pistol/plasma_pistol/beginner = 1,
-	)
-
 /datum/outfit/quick/beginner/marine/shocktrooper
 	name = "Shocktrooper"
 	desc = "The bleeding edge of the corps. \

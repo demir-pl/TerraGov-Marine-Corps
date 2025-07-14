@@ -162,49 +162,6 @@
 	)
 
 
-/datum/outfit/quick/beginner_robot/marine/shotgunner
-	name = "Shotgunner"
-	desc = "Up close and personal. Wields the SH-39, a semi-automatic shotgun loaded with slugs. \
-	An absolute monster at short to mid range, the shotgun will do heavy damage to any target hit, as well as stunning them briefly, staggering them, and knocking them back."
-
-	w_uniform = /obj/item/clothing/under/marine/robotic/holster
-	wear_suit = /obj/item/clothing/suit/modular/robot/lightgeneral
-	head = /obj/item/clothing/head/modular/robot
-
-	l_pocket = /obj/item/storage/holster/flarepouch/full
-	r_pocket = /obj/item/storage/pouch/shotgun
-
-	back = /obj/item/storage/backpack/marine
-	belt = /obj/item/storage/belt/shotgun
-	suit_store = /obj/item/weapon/gun/shotgun/combat/standardmarine/beginner
-
-	backpack_contents = list(
-		/obj/item/stack/cable_coil = 6,
-		/obj/item/tool/weldingtool = 6,
-	)
-
-	suit_contents = list(
-		/obj/item/storage/box/m94 = 2,
-	)
-
-	head_contents = list(
-		/obj/item/reagent_containers/hypospray/autoinjector/inaprovaline = 2,
-	)
-
-	belt_contents = list(
-		/obj/item/ammo_magazine/handful/slug = 14,
-	)
-
-	webbing_contents = list(
-		/obj/item/ammo_magazine/pistol/plasma_pistol = 3,
-		/obj/item/weapon/gun/pistol/plasma_pistol/beginner = 1,
-	)
-
-	r_pocket_contents = list(
-		/obj/item/ammo_magazine/handful/slug = 4,
-	)
-
-
 /datum/outfit/quick/beginner_robot/marine/shocktrooper
 	name = "Shocktrooper"
 	desc = "The bleeding edge of the corps. \

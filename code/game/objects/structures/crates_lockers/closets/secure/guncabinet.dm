@@ -35,7 +35,6 @@
 
 
 /obj/structure/closet/secure_closet/guncabinet/canterbury/PopulateContents()
-	new /obj/item/weapon/gun/shotgun/combat/standardmarine(src)
 	new /obj/item/weapon/gun/rifle/m412(src)
 	new /obj/item/weapon/gun/flamer/big_flamer/marinestandard(src)
 	new /obj/item/ammo_magazine/flamer_tank/large(src)
