@@ -276,90 +276,6 @@
 /obj/effect/mapping_helpers/area_flag_injector/no_construction
 	flag_type = NO_CONSTRUCTION
 
-/obj/effect/mapping_helpers/simple_pipes
-	name = "Simple Pipes"
-	late = TRUE
-	icon_state = "pipe-3"
-	var/piping_layer = 3
-	var/pipe_color = ""
-	var/connection_num = 0
-	var/hide = FALSE
-	/// Tracking variable to prevent duplicate runtime messages
-	var/crashed = FALSE
-
-/obj/effect/mapping_helpers/simple_pipes/LateInitialize()
-	var/list/connections = list( dir2text(NORTH) = FALSE, dir2text(SOUTH) = FALSE , dir2text(EAST) = FALSE , dir2text(WEST) = FALSE)
-	var/list/valid_connectors = typecacheof(/obj/machinery/atmospherics)
-
-	// Check for duplicate helpers on a single turf
-	var/turf/self_turf = get_turf(src)
-	for(var/obj/effect/mapping_helpers/simple_pipes/helper in self_turf.contents)
-		if(helper == src)
-			continue
-		if(helper.piping_layer != src.piping_layer)
-			continue
-		if(helper.crashed)
-			return
-		helper.crashed = TRUE
-		crashed = TRUE
-		CRASH("Duplicate simple_pipes mapping helper at [AREACOORD(src)]")
-
-	for(var/direction in connections)
-		var/turf/T = get_step(src, text2dir(direction))
-		for(var/machine_type in T.contents)
-			if(istype(machine_type, type))
-				var/obj/effect/mapping_helpers/simple_pipes/found = machine_type
-				if(found.piping_layer != piping_layer)
-					continue
-				connections[direction] = TRUE
-				connection_num++
-				break
-			if(!is_type_in_typecache(machine_type, valid_connectors))
-				continue
-			var/obj/machinery/atmospherics/machine = machine_type
-
-			if(machine.piping_layer != piping_layer)
-				continue
-
-			if(angle2dir(dir2angle(text2dir(direction)) + 180) & machine.initialize_directions)
-				connections[direction] = TRUE
-				connection_num++
-				break
-
-	switch(connection_num)
-		if(1)
-			for(var/direction in connections)
-				if(connections[direction] != TRUE)
-					continue
-				spawn_pipe(direction, /obj/machinery/atmospherics/pipe/simple)
-				break
-		if(2)
-			for(var/direction in connections)
-				if(connections[direction] != TRUE)
-					continue
-
-				//Detects straight pipes connected from east to west , north to south etc.
-				if(connections[dir2text(angle2dir(dir2angle(text2dir(direction)) + 180))] == TRUE)
-					spawn_pipe(direction, /obj/machinery/atmospherics/pipe/simple)
-					break
-
-				//Detects curved pipes, finds the second connection and spawns a pipe, then removes the direction from the list to prevent duplciates
-				for(var/direction2 in connections - direction)
-					if(connections[direction2] != TRUE)
-						continue
-					spawn_pipe(dir2text(text2dir(direction) + text2dir(direction2)), /obj/machinery/atmospherics/pipe/simple)
-					connections -= direction2
-					break
-		if(3)
-			for(var/direction in connections)
-				if(connections[direction] == FALSE)
-					spawn_pipe(direction, /obj/machinery/atmospherics/pipe/manifold)
-					break
-		if(4)
-			spawn_pipe(dir2text(NORTH), /obj/machinery/atmospherics/pipe/manifold4w)
-
-	qdel(src)
-
 /obj/effect/mapping_helpers/light
 	name = "generic placeholder for light map helpers, do not place in game"
 	layer = DOOR_HELPER_LAYER
@@ -521,14 +437,6 @@
 
 /obj/effect/mapping_helpers/light/brightness/bright
 	brightness_intensity = 6
-
-/// spawn the pipe
-/obj/effect/mapping_helpers/simple_pipes/proc/spawn_pipe(direction, type)
-	var/obj/machinery/atmospherics/pipe/pipe = new type(get_turf(src), TRUE, text2dir(direction))
-	pipe.level = level
-	pipe.piping_layer = piping_layer
-	pipe.update_layer()
-	pipe.paint(pipe_color)
 
 /obj/effect/mapping_helpers/airlock/unres
 	name = "airlock unrestricted side helper"
