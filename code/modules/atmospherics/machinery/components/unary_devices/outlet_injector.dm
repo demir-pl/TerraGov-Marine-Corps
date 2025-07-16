@@ -4,6 +4,7 @@
 	name = "air injector"
 	desc = "Has a valve and pump attached to it."
 
+	hide = TRUE
 	use_power = IDLE_POWER_USE
 	can_unwrench = FALSE
 	shift_underlay_only = FALSE

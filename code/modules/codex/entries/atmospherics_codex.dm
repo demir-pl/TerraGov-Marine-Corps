@@ -10,67 +10,67 @@
 
 //Supply/Scrubber pipes
 /datum/codex_entry/atmos_visible_scrub
-	associated_paths = list(/obj/machinery/atmospherics/pipe/simple/scrubbers/visible)
+	associated_paths = list(/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible)
 	mechanics_text = "This is a special 'scrubber' pipe, which does not connect to 'normal' pipes.  If you want to connect it, use \
 	a Universal Adapter pipe."
 
 /datum/codex_entry/atmos_visible_supply
-	associated_paths = list(/obj/machinery/atmospherics/pipe/simple/supply/visible)
+	associated_paths = list(/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/visible)
 	mechanics_text = "This is a special 'supply' pipe, which does not connect to 'normal' pipes.  If you want to connect it, use \
 	a Universal Adapter pipe."
 
 /datum/codex_entry/atmos_hidden_supply
-	associated_paths = list(/obj/machinery/atmospherics/pipe/simple/supply/hidden)
+	associated_paths = list(/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden)
 	mechanics_text = "This is a special 'supply' pipe, which does not connect to 'normal' pipes.  If you want to connect it, use \
 	a Universal Adapter pipe."
 
 /datum/codex_entry/atmos_hidden_scrub
-	associated_paths = list(/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden)
+	associated_paths = list(/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden)
 	mechanics_text = "This is a special 'scrubber' pipe, which does not connect to 'normal' pipes.  If you want to connect it, use \
 	a Universal Adapter pipe."
 
 //Three way manifolds
 /datum/codex_entry/atmos_manifold
-	associated_paths = list(/obj/machinery/atmospherics/pipe/manifold)
+	associated_paths = list(/obj/machinery/atmospherics/pipe/smart/manifold)
 	mechanics_text = "A normal pipe with three ends to connect to."
 
 /datum/codex_entry/atmos_manifold_visible_scrub
-	associated_paths = list(/obj/machinery/atmospherics/pipe/manifold/scrubbers/visible)
+	associated_paths = list(/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/visible)
 	mechanics_text = "This is a special 'scrubber' pipe, which does not connect to 'normal' pipes.  If you want to connect it, use \
 	a Universal Adapter pipe."
 
 /datum/codex_entry/atmos_manifold_visible_supply
-	associated_paths = list(/obj/machinery/atmospherics/pipe/manifold/supply/visible)
+	associated_paths = list(/obj/machinery/atmospherics/pipe/smart/manifold/supply/visible)
 	mechanics_text = "This is a special 'supply' pipe, which does not connect to 'normal' pipes.  If you want to connect it, use \
 	a Universal Adapter pipe."
 
 /datum/codex_entry/atmos_manifold_hidden_scrub
-	associated_paths = list(/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden)
+	associated_paths = list(/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden)
 	mechanics_text = "This is a special 'scrubber' pipe, which does not connect to 'normal' pipes.  If you want to connect it, use \
 	a Universal Adapter pipe."
 
 /datum/codex_entry/atmos_manifold_hidden_supply
-	associated_paths = list(/obj/machinery/atmospherics/pipe/manifold/supply/hidden)
+	associated_paths = list(/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden)
 	mechanics_text = "This is a special 'supply' pipe, which does not connect to 'normal' pipes.  If you want to connect it, use \
 	a Universal Adapter pipe."
 
 //Four way manifolds
 /datum/codex_entry/atmos_manifold_manifold_four
-	associated_paths = list(/obj/machinery/atmospherics/pipe/manifold4w)
+	associated_paths = list(/obj/machinery/atmospherics/pipe/smart/manifold4w)
 	mechanics_text = "This is a four-way pipe."
 
 /datum/codex_entry/atmos_manifold_manifold_four_visible_scrub
-	associated_paths = list(/obj/machinery/atmospherics/pipe/manifold4w/scrubbers/visible)
+	associated_paths = list(/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible)
 	mechanics_text = "This is a special 'scrubber' pipe, which does not connect to 'normal' pipes.  If you want to connect it, use \
 	a Universal Adapter pipe."
 
 /datum/codex_entry/atmos_manifold_manifold_four_visible_supply
-	associated_paths = list(/obj/machinery/atmospherics/pipe/manifold4w/supply/hidden)
+	associated_paths = list(/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden)
 	mechanics_text = "This is a special 'supply' pipe, which does not connect to 'normal' pipes.  If you want to connect it, use \
 	a Universal Adapter pipe."
 
 /datum/codex_entry/atmos_manifold_manifold_four_hidden_scrub
-	associated_paths = list(/obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden)
+	associated_paths = list(/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden)
 	mechanics_text = "This is a special 'scrubber' pipe, which does not connect to 'normal' pipes.  If you want to connect it, use \
 	a Universal Adapter pipe."
 

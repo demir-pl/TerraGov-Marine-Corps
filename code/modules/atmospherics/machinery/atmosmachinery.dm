@@ -25,6 +25,7 @@
 	var/paintable = TRUE
 	var/piping_layer = PIPING_LAYER_DEFAULT
 	var/pipe_flags = NONE
+	var/hide = TRUE
 
 	var/global/list/iconsetids = list()
 	var/global/list/pipeimages = list()

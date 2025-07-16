@@ -21,8 +21,17 @@
 	for(var/direction in GLOB.cardinals)
 		if(!(direction & initialize_directions))
 			continue
+		var/obj/machinery/atmospherics/node = findConnecting(direction)
 
-		. += getpipeimage(icon, "cap", direction, pipe_color, piping_layer, TRUE)
+		var/image/cap
+		if(node)
+			cap = getpipeimage(icon, "cap", direction, pipe_color, piping_layer = piping_layer)
+		else
+			cap = getpipeimage(icon, "cap", direction, piping_layer = piping_layer)
+
+		add_overlay(cap)
+
+	return ..()
 
 /obj/machinery/atmospherics/components/trinary/mixer/update_icon_nopipes()
 	var/on_state = on && nodes[1] && nodes[2] && nodes[3] && is_operational()

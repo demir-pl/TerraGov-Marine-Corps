@@ -8,6 +8,9 @@
 	icon = 'icons/obj/atmospherics/components/unary_devices.dmi' //We reuse the normal vent icons!
 	icon_state = "dpvent_map-2"
 
+
+	hide = TRUE
+
 	//node2 is output port
 	//node1 is input port
 

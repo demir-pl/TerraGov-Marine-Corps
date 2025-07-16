@@ -11,6 +11,7 @@
 	name = "air vent"
 	desc = "Has a valve and pump attached to it."
 
+	hide = TRUE
 	use_power = IDLE_POWER_USE
 	can_unwrench = FALSE
 	welded = FALSE
