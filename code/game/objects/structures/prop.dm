@@ -936,7 +936,7 @@
 	name = "pipe manifold"
 	desc = "A pump that moves gas by pressure."
 	icon = 'icons/obj/atmospherics/components/binary_devices.dmi'
-	icon_state = "pump_map-3"
+	icon_state = "pump_map-2"
 
 /obj/structure/prop/mainship/pipeprop/pump/on
 	icon_state = "pump_on"
