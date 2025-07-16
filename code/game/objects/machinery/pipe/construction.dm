@@ -25,6 +25,7 @@ Buildable meters
 	level = 2
 	var/piping_layer = PIPING_LAYER_DEFAULT
 	var/RPD_type
+	var/pipe_color
 
 /obj/item/pipe/directional
 	RPD_type = PIPE_UNARY
@@ -44,11 +45,12 @@ Buildable meters
 	//Flipping handled manually due to custom handling for trinary pipes
 	//AddComponent(/datum/component/simple_rotation, ROTATION_ALTCLICK | ROTATION_CLOCKWISE)
 
-/obj/item/pipe/Initialize(mapload, _pipe_type, _dir, obj/machinery/atmospherics/make_from)
+/obj/item/pipe/Initialize(mapload, _pipe_type, _dir, obj/machinery/atmospherics/make_from, device_color)
 	if(make_from)
 		make_from_existing(make_from)
 	else
 		pipe_type = _pipe_type
+		pipe_color = device_color
 		setDir(_dir)
 
 	update()
@@ -61,6 +63,7 @@ Buildable meters
 	pipename = make_from.name
 	add_atom_colour(make_from.color, FIXED_COLOR_PRIORITY)
 	pipe_type = make_from.type
+	pipe_color = make_from.pipe_color
 
 /obj/item/pipe/trinary/flippable/make_from_existing(obj/machinery/atmospherics/components/trinary/make_from)
 	..()
@@ -137,26 +140,56 @@ Buildable meters
 	if(iswrench(I))
 		return wrench_act(user, I)
 
-/obj/item/pipe/wrench_act(mob/living/user, obj/item/tool/wrench/W)
+///Check if the pipe on the turf and our to be placed binary pipe are perpendicular to each other
+/obj/item/pipe/proc/check_ninety_degree_dir(obj/machinery/atmospherics/machine)
+	if(ISDIAGONALDIR(machine.dir))
+		return FALSE
+	if(EWCOMPONENT(machine.dir) && EWCOMPONENT(dir))
+		return FALSE
+	if(NSCOMPONENT(machine.dir) && NSCOMPONENT(dir))
+		return FALSE
+	return TRUE
+
+/obj/item/pipe/wrench_act(mob/living/user, obj/item/wrench/wrench)
 	if(!isturf(loc))
 		return TRUE
 
 	var/obj/machinery/atmospherics/fakeA = pipe_type
 	var/flags = initial(fakeA.pipe_flags)
-	for(var/obj/machinery/atmospherics/M in loc)
-		if((M.pipe_flags & flags & PIPING_ONE_PER_TURF))	//Only one dense/requires density object per tile, eg connectors/cryo/heater/coolers.
+	var/pipe_count = 0
+	for(var/obj/machinery/atmospherics/machine in loc)
+		if(machine.piping_layer != piping_layer)
+			continue
+		pipe_count += 1
+	for(var/obj/machinery/atmospherics/machine in loc)
+		if((machine.pipe_flags & flags & PIPING_ONE_PER_TURF)) //Only one dense/requires density object per tile, eg connectors/cryo/heater/coolers.
 			to_chat(user, span_warning("Something is hogging the tile!"))
 			return TRUE
-		if((M.piping_layer != piping_layer) && !((M.pipe_flags | flags) & PIPING_ALL_LAYER)) //don't continue if either pipe goes across all layers
+
+		if(pipe_count == 1 && istype(machine, /obj/machinery/atmospherics/pipe/smart) && ispath(pipe_type, /obj/machinery/atmospherics/pipe/smart) && lowertext(machine.pipe_color) != lowertext(pipe_color) && machine.connection_num < 3)
+			var/direction = machine.dir
+			if((direction & EAST|WEST || direction & SOUTH|NORTH) && !ISDIAGONALDIR(direction))
+				pipe_type = /obj/machinery/atmospherics/pipe/bridge_pipe
+				if(EWCOMPONENT(direction))
+					dir = NORTH
+				if(NSCOMPONENT(direction))
+					dir = EAST
+				continue
+
+		if(flags & PIPING_BRIDGE && !(machine.pipe_flags & PIPING_BRIDGE) && check_ninety_degree_dir(machine)) //continue if we are placing a bridge pipe over a normal pipe only (prevent duplicates)
 			continue
-		if(M.GetInitDirections() & SSair.get_init_dirs(pipe_type, fixed_dir()))	// matches at least one direction on either type of pipe
+
+		if((machine.piping_layer != piping_layer) && !((machine.pipe_flags | flags) & PIPING_ALL_LAYER)) //don't continue if either pipe goes across all layers
+			continue
+
+		if(machine.GetInitDirections() & SSair.get_init_dirs(pipe_type, fixed_dir())) // matches at least one direction on either type of pipe
 			to_chat(user, span_warning("There is already a pipe at that location!"))
 			return TRUE
 	// no conflicts found
 
-	var/obj/machinery/atmospherics/A = new pipe_type(loc)
-	build_pipe(A)
-	A.on_construction(color, piping_layer)
+	var/obj/machinery/atmospherics/built_machine = new pipe_type(loc)
+	build_pipe(built_machine)
+	built_machine.on_construction(pipe_color, piping_layer)
 
 	playsound(loc, 'sound/items/ratchet.ogg', 25, 1)
 	user.visible_message( \

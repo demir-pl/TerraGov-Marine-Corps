@@ -21,7 +21,8 @@
 	resistance_flags = RESIST_ALL
 	var/can_unwrench = FALSE
 	var/initialize_directions = 0
-	var/pipe_color
+	var/pipe_color = COLOR_VERY_LIGHT_GRAY
+	var/paintable = TRUE
 	var/piping_layer = PIPING_LAYER_DEFAULT
 	var/pipe_flags = NONE
 
@@ -32,6 +33,9 @@
 
 	var/device_type = 0
 	var/list/obj/machinery/atmospherics/nodes
+
+	///Store the smart pipes connections, used for pipe construction
+	var/connection_num = 0
 
 	var/construction_type
 	var/pipe_state //icon_state as a pipe item
@@ -124,9 +128,10 @@
 //Find a connecting /obj/machinery/atmospherics in specified direction
 /obj/machinery/atmospherics/proc/findConnecting(direction, prompted_layer)
 	for(var/obj/machinery/atmospherics/target in get_step(src, direction))
-		if(target.initialize_directions & get_dir(target,src))
-			if(connection_check(target, prompted_layer))
-				return target
+		if(!(target.initialize_directions & get_dir(target,src)))
+			continue
+		if(connection_check(target, prompted_layer))
+			return target
 
 /obj/machinery/atmospherics/proc/connection_check(obj/machinery/atmospherics/target, given_layer)
 	if(isConnectable(target, given_layer) && target.isConnectable(src, given_layer) && (target.initialize_directions & get_dir(target,src)))
@@ -136,7 +141,31 @@
 /obj/machinery/atmospherics/proc/isConnectable(obj/machinery/atmospherics/target, given_layer)
 	if(isnull(given_layer))
 		given_layer = piping_layer
-	if((target.piping_layer == given_layer) || (target.pipe_flags & PIPING_ALL_LAYER))
+	if(check_connectable_layer(target, given_layer) && target.loc != loc && check_connectable_color(target))
+		return TRUE
+	return FALSE
+
+/**
+ * check if the piping layer are the same on both sides or one of them has the PIPING_ALL_LAYER flag
+ * returns TRUE if one of the parameters is TRUE
+ * called by isConnectable()
+ * Arguments:
+ * * obj/machinery/atmospherics/target - the machinery we want to connect to
+ * * given_layer - the piping_layer we are connecting to
+ */
+/obj/machinery/atmospherics/proc/check_connectable_layer(obj/machinery/atmospherics/target, given_layer)
+	if(target.piping_layer == given_layer || (target.pipe_flags | pipe_flags) & PIPING_ALL_LAYER)
+		return TRUE
+	return FALSE
+
+/**
+ * check if the color are the same on both sides or if one of the pipes are grey or have the PIPING_ALL_COLORS flag
+ * returns TRUE if one of the parameters is TRUE
+ * Arguments:
+ * * obj/machinery/atmospherics/target - the machinery we want to connect to
+ */
+/obj/machinery/atmospherics/proc/check_connectable_color(obj/machinery/atmospherics/target)
+	if(lowertext(target.pipe_color) == lowertext(pipe_color) || ((target.pipe_flags | pipe_flags) & PIPING_ALL_COLORS) || lowertext(target.pipe_color) == lowertext(COLOR_VERY_LIGHT_GRAY) || lowertext(pipe_color == COLOR_VERY_LIGHT_GRAY))
 		return TRUE
 	return FALSE
 
@@ -206,7 +235,7 @@
 /obj/machinery/atmospherics/deconstruct(disassembled = TRUE, mob/living/blame_mob)
 	if(!(atom_flags & NODECONSTRUCT))
 		if(can_unwrench)
-			var/obj/item/pipe/stored = new construction_type(loc, null, dir, src)
+			var/obj/item/pipe/stored = new construction_type(loc, null, dir, src, pipe_color)
 			stored.setPipingLayer(piping_layer)
 			if(!disassembled)
 				stored.take_damage(stored.max_integrity * 0.5)
@@ -226,6 +255,16 @@
 		pipe_overlay = . = pipeimages[identifier] = image(iconset, iconstate, dir = direction)
 		pipe_overlay.color = col
 		PIPING_LAYER_SHIFT(pipe_overlay, piping_layer)
+
+
+///Similar to getpipeimage(); will create an image from the set_icon and set_state; mostly used to create overlays for connections.
+/obj/machinery/atmospherics/proc/pipe_overlay(set_icon, set_state, direction, color = COLOR_VERY_LIGHT_GRAY, piping_layer = 3, set_layer = PIPE_VISIBLE_LEVEL)
+	var/image/pipe_overlay
+	pipe_overlay = image(icon = set_icon, icon_state = set_state, layer = set_layer, dir = direction)
+	pipe_overlay.color = color
+	PIPING_LAYER_SHIFT(pipe_overlay, piping_layer)
+	return pipe_overlay
+
 
 /obj/machinery/atmospherics/on_construction(obj_color, set_layer)
 	if(can_unwrench)
@@ -320,4 +359,4 @@
 	user.sight |= (SEE_TURFS|BLIND)
 
 /obj/machinery/atmospherics/proc/update_layer()
-	layer = initial(layer) + (piping_layer - PIPING_LAYER_DEFAULT) * PIPING_LAYER_LCHANGE
+	layer = initial(layer) + (piping_layer - PIPING_LAYER_DEFAULT) * PIPING_LAYER_LCHANGE + (GLOB.pipe_colors_ordered[pipe_color] * 0.01)

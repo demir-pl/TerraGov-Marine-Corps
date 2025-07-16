@@ -21,6 +21,8 @@
 	update_icon_nopipes()
 
 	underlays.Cut()
+	color = null
+
 
 	var/turf/T = loc
 	if(level == 2 || (!T.intact_tile && !istype(T, /turf/open/floor/plating/plating_catwalk)))
@@ -40,13 +42,13 @@
 		for(var/i in 1 to device_type) //adds intact pieces
 			if(nodes[i])
 				var/obj/machinery/atmospherics/node = nodes[i]
-				var/image/img = get_pipe_underlay("pipe_intact", get_dir(src, node), node.pipe_color)
+				var/image/img = get_pipe_underlay("pipe_intact", get_dir(src, node), pipe_color)
 				underlays += img
 				connected |= img.dir
 
 	for(var/direction in GLOB.cardinals)
 		if((initialize_directions & direction) && !(connected & direction))
-			underlays += get_pipe_underlay("pipe_exposed", direction)
+			underlays += get_pipe_underlay("pipe_exposed", direction, pipe_color)
 
 	if(!shift_underlay_only)
 		PIPING_LAYER_SHIFT(src, piping_layer)
@@ -69,7 +71,7 @@
 	..()
 
 /obj/machinery/atmospherics/components/on_construction()
-	..()
+	. = ..()
 	update_parents()
 
 /obj/machinery/atmospherics/components/build_network()
