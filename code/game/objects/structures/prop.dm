@@ -930,13 +930,13 @@
 	name = "pipe manifold"
 	desc = "A manifold composed of regular pipes."
 	icon = 'icons/obj/atmospherics/pipes/manifold.dmi'
-	icon_state = "manifold-2"
+	icon_state = "manifold-3"
 
 /obj/structure/prop/mainship/pipeprop/pump
 	name = "pipe manifold"
 	desc = "A pump that moves gas by pressure."
 	icon = 'icons/obj/atmospherics/components/binary_devices.dmi'
-	icon_state = "pump_map-2"
+	icon_state = "pump_map-3"
 
 /obj/structure/prop/mainship/pipeprop/pump/on
 	icon_state = "pump_on"

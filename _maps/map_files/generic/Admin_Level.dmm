@@ -11534,8 +11534,8 @@
 /turf/open/floor/plating,
 /area/centcom/valhalla)
 "qKc" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
-	dir = 4
+/obj/structure/prop/mainship/pipeprop/manifold{
+	dir = 8
 	},
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
