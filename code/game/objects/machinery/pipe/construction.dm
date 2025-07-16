@@ -150,7 +150,7 @@ Buildable meters
 		return FALSE
 	return TRUE
 
-/obj/item/pipe/wrench_act(mob/living/user, obj/item/wrench/wrench)
+/obj/item/pipe/wrench_act(mob/living/user, obj/item/wrench/W)
 	if(!isturf(loc))
 		return TRUE
 
