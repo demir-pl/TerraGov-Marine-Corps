@@ -32,7 +32,7 @@
 /area/bigredv2/outside/s)
 "dq" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/simple/green/hidden{
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/hidden{
 	dir = 4
 	},
 /obj/effect/ai_node,
@@ -64,7 +64,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
 "fK" = (
-/obj/machinery/atmospherics/pipe/simple/green/hidden{
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/hidden{
 	dir = 4
 	},
 /obj/effect/ai_node,
@@ -94,7 +94,7 @@
 "jp" = (
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/green/hidden{
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/hidden{
 	dir = 4
 	},
 /turf/open/floor,
@@ -103,7 +103,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
 "jW" = (
-/obj/machinery/atmospherics/pipe/simple/green/hidden{
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/hidden{
 	dir = 9
 	},
 /turf/open/floor/marking/asteroidwarning{
@@ -141,13 +141,13 @@
 "mv" = (
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/green/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/hidden,
 /obj/effect/landmark/weed_node,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "mw" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/simple/green/hidden{
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/hidden{
 	dir = 4
 	},
 /obj/machinery/door/airlock/mainship/engineering/free_access{
@@ -157,7 +157,7 @@
 /area/bigredv2/outside/filtration_plant)
 "mK" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/simple/green/hidden{
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/hidden{
 	dir = 4
 	},
 /turf/open/floor,
@@ -236,7 +236,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "tX" = (
-/obj/machinery/atmospherics/pipe/simple/green/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/hidden,
 /obj/effect/ai_node,
 /turf/open/floor/marking/asteroidwarning{
 	dir = 4
@@ -271,7 +271,7 @@
 	},
 /area/bigredv2/outside/se)
 "vK" = (
-/obj/machinery/atmospherics/pipe/simple/green/hidden{
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/hidden{
 	dir = 4
 	},
 /turf/open/floor/marking/asteroidwarning,
@@ -361,7 +361,7 @@
 /area/bigredv2/outside/s)
 "FP" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/green/hidden{
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/hidden{
 	dir = 4
 	},
 /turf/open/floor/marking/asteroidwarning,
@@ -404,7 +404,7 @@
 /turf/closed/mineral/smooth/bigred,
 /area/bigredv2/caves/rock)
 "HC" = (
-/obj/machinery/atmospherics/pipe/simple/green/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/hidden,
 /obj/structure/cable,
 /turf/open/floor/marking/asteroidwarning{
 	dir = 4
@@ -446,7 +446,7 @@
 	},
 /area/bigredv2/outside/se)
 "Rv" = (
-/obj/machinery/atmospherics/pipe/simple/green/hidden{
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/hidden{
 	dir = 6
 	},
 /obj/structure/cable,
@@ -461,7 +461,7 @@
 	},
 /area/bigredv2/outside/se)
 "RL" = (
-/obj/machinery/atmospherics/pipe/simple/green/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/hidden,
 /turf/open/floor/marking/asteroidwarning{
 	dir = 4
 	},
@@ -502,7 +502,7 @@
 	},
 /area/bigredv2/outside/s)
 "Uk" = (
-/obj/machinery/atmospherics/pipe/simple/green/hidden{
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/hidden{
 	dir = 4
 	},
 /obj/effect/landmark/weed_node,
@@ -561,12 +561,12 @@
 "Yr" = (
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/manifold/green/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold/green/hidden,
 /obj/effect/ai_node,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "ZP" = (
-/obj/machinery/atmospherics/pipe/simple/green/hidden{
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/hidden{
 	dir = 4
 	},
 /turf/open/floor/marking/asteroidwarning,
