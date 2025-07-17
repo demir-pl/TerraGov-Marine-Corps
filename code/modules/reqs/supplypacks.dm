@@ -20,5 +20,3 @@
 	for(var/i in contains)
 		var/atom/movable/AM = i
 		new AM(location)
-
-
